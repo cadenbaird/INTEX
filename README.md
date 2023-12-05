@@ -1,2 +1,0 @@
-# INTEX
-INTEX Project
