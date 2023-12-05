@@ -86,13 +86,10 @@ app.get('/report', (req, res) => {
 
 // Submitting the survey
 app.post('/submitSurvey', async (req, res) => {
-    // Generate a unique ParticipantID (you may use a library like UUID or any other method)
-    // const participantID = await generateUniqueID(); // Implement this function according to your needs
-
     // Get the current date and time
-    // const currentDate = moment().format('MM-DD-YYYY');
-    // const currentTime = moment().format('HH:mm:ss');
-    // Insert data into the database using knex for each selected social media platform
+    var currentDate = moment().format('MM-DD-YYYY');
+    var currentTime = moment().format('HH:mm:ss');
+    //Insert data into the database using knex for each selected social media platform
     for (const SMPlatforms of whatSocialMedia) {
     knex('provo_ID').insert({
                 ParticipantID: req.body.participantID,
@@ -119,10 +116,10 @@ app.post('/submitSurvey', async (req, res) => {
                 DailyActFluctuate: req.body.DailyActFluctuate,
                 SleepIssues: req.body.SleepIssues,
                 DataFrom: 'Provo'
-            });
+            }).then(myResponse => {
+                res.send('Survey submitted successfully!')
+             })
         }
-        // Respond with success message or redirect to a thank-you page
-        res.send('Survey submitted successfully!');
 
     });
 
