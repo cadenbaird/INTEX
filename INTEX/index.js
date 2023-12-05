@@ -87,100 +87,47 @@ app.get('/report', (req, res) => {
 // Submitting the survey
 app.post('/submitSurvey', async (req, res) => {
     // Generate a unique ParticipantID (you may use a library like UUID or any other method)
-    const participantID = await generateUniqueID(); // Implement this function according to your needs
+    // const participantID = await generateUniqueID(); // Implement this function according to your needs
 
     // Get the current date and time
-    const currentDate = moment().format('MM-DD-YYYY');
-    const currentTime = moment().format('HH:mm:ss');
-
-    // Extract data from the form submission
-    const {
-        age,
-        gender,
-        relationshipStatus,
-        occupationStatus,
-        affiliatedOrganizations,
-        useSocialMedia,
-        whatSocialMedia,
-        AvgTime,
-        NoSpecPurpose,
-        HowOftDisctracted,
-        Restless,
-        HowDistracted,
-        BotheredByWorries,
-        DiffConcentration,
-        HowOftCompare,
-        CompFeelings,
-        OftValidation,
-        OftDepressed,
-        DailyActFluctuate,
-        SleepIssues
-    } = req.body;
-
-    try {
-        // Insert data into the database using knex for each selected social media platform
-        for (const platform of whatSocialMedia) {
-            await knex('provo_ID').insert({
-                participant_id: participantID,
-                date: currentDate,
-                time: currentTime,
-                age,
-                gender,
-                relationship_status: relationshipStatus,
-                occupation_status: occupationStatus,
-                affiliated_organizations: affiliatedOrganizations.join(', '),
-                use_social_media: useSocialMedia,
-                what_social_media: platform, // Inserting one platform at a time
-                avg_time: AvgTime,
-                no_spec_purpose: NoSpecPurpose,
-                how_often_distracted: HowOftDisctracted,
-                restless: Restless,
-                how_distracted: HowDistracted,
-                bothered_by_worries: BotheredByWorries,
-                difficult_concentration: DiffConcentration,
-                how_often_compare: HowOftCompare,
-                feelings_about_comparisons: CompFeelings,
-                how_often_validation: OftValidation,
-                often_depressed: OftDepressed,
-                daily_activity_fluctuate: DailyActFluctuate,
-                sleep_issues: SleepIssues,
+    // const currentDate = moment().format('MM-DD-YYYY');
+    // const currentTime = moment().format('HH:mm:ss');
+    // Insert data into the database using knex for each selected social media platform
+    for (const SMPlatforms of whatSocialMedia) {
+    knex('provo_ID').insert({
+                ParticipantID: req.body.participantID,
+                Date: currentDate,
+                Time: currentTime,
+                Age: req.body.age,
+                Gender: req.body.gender,
+                RelationshipStatus: req.body.relationshipStatus,
+                OccupationStatus: req.body.occupationStatus,
+                Organization: req.body.affiliatedOrganizations.join(', '),
+                DoYouUseSocialMedia: req.body.useSocialMedia,
+                SMPlatforms: req.body.SMPlatforms, // Inserting one platform at a time
+                AvgTime: req.body.AvgTime,
+                NoSpecPurpose: req.body.NoSpecPurpose,
+                HowOftDistracted: req.body.HowOftDisctracted,
+                Restless: req.body.Restless,
+                HowDistracted: req.body.HowDistracted,
+                BotheredByWorries: req.body.BotheredByWorries,
+                DiffConcentration: req.body.DiffConcentration,
+                HowOftCompare: req.body.HowOftCompare,
+                fCompFeelings: req.body.CompFeelings,
+                OftValidation: req.body.OftValidation,
+                OftDepressed: req.body.OftDepressed,
+                DailyActFluctuate: req.body.DailyActFluctuate,
+                SleepIssues: req.body.SleepIssues,
                 DataFrom: 'Provo'
             });
         }
-
         // Respond with success message or redirect to a thank-you page
         res.send('Survey submitted successfully!');
-    } catch (error) {
-        // Handle errors
-        console.error('Error submitting survey:', error);
-        res.status(500).send('Internal Server Error');
-    }
-});
 
-// Function to generate a unique ID by finding the maximum participant_id and incrementing it
-async function generateUniqueID() {
-    try {
-        // Query the database to find the maximum participant_id
-        const maxParticipantID = await knex('provo_ID').max('participant_id as maxID').first();
-
-        // Extract the maximum participant_id value
-        const currentMaxID = maxParticipantID.maxID;
-
-        // Generate the next participant_id by incrementing the current maximum
-        const nextID = currentMaxID ? currentMaxID + 1 : 1;
-
-        return nextID;
-    } catch (error) {
-        console.error('Error generating unique ID:', error);
-        throw error; // You might want to handle the error according to your application's requirements
-    }
-}
-
-
-
+    });
 
 // Start the server
 const port = ENV_VARIABLES.appPort;
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
-});
+})
