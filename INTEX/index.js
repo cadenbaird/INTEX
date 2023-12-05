@@ -63,9 +63,12 @@ app.get('/createaccount', (req, res) => {
     res.render('createaccount'); 
 });
 
-//  app.post('/createaccount', async (req, res) => {
-//      const { username, password } = req.body;
-//  );
+app.post('/createaccount', async (req, res) => {
+    knex('userstorage').insert({
+        Username: req.body.username,
+        Password: req.body.password
+    });
+});
 
 //login page
 app.get('/loginpage', (req, res) => {
