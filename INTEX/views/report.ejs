@@ -1,0 +1,77 @@
+<!-- Professional
+Can only access if special username provided
+shows data from Survey (shows all by default)(Tableau dashboard)
+Dropdown list to filter to a specific person -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/content/css/styles.css">
+</head>
+<body>
+    <label><b>Full Database:</b></label>
+    <br><br> 
+    <table style="width: 100%; border: 1px solid black;">
+        <thead style="background-color: cornflowerblue; color:white;">
+            <tr>
+                <th style="text-align: left;">ParticipantID</th>
+                <th style="text-align: left;">Date</th>
+                <th style="text-align: left;">Time</th>
+                <th style="text-align: left;">Age</th>
+                <th style="text-align: left;">Gender</th>
+                <th style="text-align: left;">RelationshipStatus</th>
+                <th style="text-align: left;">OccupationStatus</th>
+                <th style="text-align: left;">Organization</th>
+                <th style="text-align: left;">DoYouUseSocialMedia</th>
+                <th style="text-align: left;">SocialMediaNum</th>
+                <th style="text-align: left;">SMPlatforms</th>
+                <th style="text-align: left;">AvgTime</th>
+                <th style="text-align: left;">ResponseID</th>
+                <th style="text-align: left;">NoSpecPurpose</th>
+                <th style="text-align: left;">HowOftDisctracted</th>
+                <th style="text-align: left;">Restless</th>
+                <th style="text-align: left;">HowDistracted</th>
+                <th style="text-align: left;">HowOftCompare</th>
+                <th style="text-align: left;">CompFeelings</th>
+                <th style="text-align: left;">OftValidation</th>
+                <th style="text-align: left;">OftDepressed</th>
+                <th style="text-align: left;">DailyActFluctuate</th>
+                <th style="text-align: left;">SleepIssues</th>
+                <th style="text-align: left;">DataFrom</th>
+            <tr>
+        </thead> 
+        <tbody style="font-family: Arial; font-size: 9pt;">
+            <% for (let iCount = 0; iCount < fulldata.length; iCount++) { %>
+                <tr>
+                    <td><%= fulldata[iCount].ParticipantID %></td>
+                    <td><%= fulldata[iCount].Date %></td>
+                    <td><%= fulldata[iCount].Time %></td>
+                    <td><%= fulldata[iCount].Age %></td>
+                    <td><%= fulldata[iCount].Gender %></td>
+                    <td><%= fulldata[iCount].RelationshipStatus %></td>
+                    <td><%= fulldata[iCount].OccupationStatus %></td>
+                    <td><%= fulldata[iCount].Organization %></td>
+                    <td><%= fulldata[iCount].DoYouUseSocialMedia %></td>
+                    <td><%= fulldata[iCount].SocialMediaNum %></td>
+                    <td><%= fulldata[iCount].SMPlatforms %></td>
+                    <td><%= fulldata[iCount].AvgTime %></td>
+                    <td><%= fulldata[iCount].ResponseID %></td>
+                    <td><%= fulldata[iCount].NoSpecPurpose %></td>
+                    <td><%= fulldata[iCount].HowOftDisctracted %></td>
+                    <td><%= fulldata[iCount].Restless %></td>
+                    <td><%= fulldata[iCount].HowDistracted %></td>
+                    <td><%= fulldata[iCount].HowOftCompare %></td>
+                    <td><%= fulldata[iCount].CompFeelings %></td>
+                    <td><%= fulldata[iCount].OftValidation %></td>
+                    <td><%= fulldata[iCount].OftDepressed %></td>
+                    <td><%= fulldata[iCount].DailyActFluctuate %></td>
+                    <td><%= fulldata[iCount].SleepIssues %></td>
+                    <td><%= fulldata[iCount].DataFrom %></td>
+                <tr>
+            <% } %>
+        </tbody> 
+    </table>
+</body>
+</html>
