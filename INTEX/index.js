@@ -24,11 +24,11 @@ const app = express();
 const knex = require('knex')({
     client: 'pg',
     connection: {
-        host:'localhost',
-        user: 'postgres',
-        password: 'admin',
-        database: 'provomentalhealth',
-        port: 5432
+        host: process.env.RDS_HOSTNAME || 'localhost',
+        user: process.env.RDS_USERNAME || 'postgres',
+        password: process.env.RDS_PASSWORD || 'admin',
+        database: process.env.RDS_DB_NAME || 'provomentalhealth',
+        port:process.env.RDS_PORT || 5432
     }
 })
 
