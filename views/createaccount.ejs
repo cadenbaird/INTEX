@@ -11,24 +11,23 @@ Ability to create user account and enter personal details
     <title>User Signup</title>
 </head>
 <body>
-    <!-- Responsive navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <img class="img-fluid rounded-circle mb-4 custom-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Current_flag_of_Provo%2C_Utah.svg/1200px-Current_flag_of_Provo%2C_Utah.svg.png" alt="Provo Mental Health" />
-            <a class="navbar-brand" href="/">Provo Mental Health</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/account">Account</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/ourdata">Our Data</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/survey">Social Media Survey</a></li>
-                </ul>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="/">Home</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="/survey">Survey</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/ourdata">Our Data</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/loginpage">Login</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
     <h1>User Signup</h1>
 
     <form action="/createaccount" method="POST">
