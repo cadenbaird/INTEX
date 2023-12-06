@@ -95,20 +95,8 @@ app.post('/loginpage', async (req, res) => {
       }
     });
 
-//app.post('/loginpage', async (req, res) => {
-    //if (knex(userstorage).contains({
-        //Username: req.body.username,
-        //Password: req.body.password
-    //})){
-        //post to localstorage that loggedIn = yes
-        //res.render("report")
-    //}
-    //else{
-        //res.send('Your username and/or password are incorrect.')
-    //}
-//});
 
-
+//here is a random note to test
 // Report Page
 app.get('/report', (req, res) => {
     res.render('report'); // Render your report form
