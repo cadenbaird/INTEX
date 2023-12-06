@@ -187,9 +187,25 @@ app.post('/submitSurvey', async (req, res) => {
     // Get the current date and time
     var currentDate = moment().format('MM-DD-YYYY');
     var currentTime = moment().format('HH:mm:ss');
-    
+
+    // Define a mapping between selectedPlatform and SocialMediaNum
+    const platformToNum = {
+        'Facebook': 1,
+        'Twitter': 2,
+        'Instagram': 3,
+        'YouTube': 4,
+        'Discord': 5,
+        'Reddit': 6,
+        'Pinterest': 7,
+        'TikTok': 8,
+        // Add more platforms as needed
+    };
+
     // Assuming SMPlatforms is an array from the request body
     for (const selectedPlatform of req.body.SMPlatforms) {
+        // Get the corresponding SocialMediaNum based on the selected platform
+        const socialMediaNum = platformToNum[selectedPlatform];
+
         // Insert data into the database using knex for each selected social media platform
         await knex('provoID').insert({
             ParticipantID: req.body.participantID,
@@ -202,6 +218,7 @@ app.post('/submitSurvey', async (req, res) => {
             Organization: req.body.affiliatedOrganizations.join(', '),
             DoYouUseSocialMedia: req.body.useSocialMedia,
             SMPlatforms: selectedPlatform, // Inserting one platform at a time
+            SocialMediaNum: socialMediaNum, // Use the mapped SocialMediaNum
             AvgTime: req.body.AvgTime,
             NoSpecPurpose: req.body.NoSpecPurpose,
             HowOftDistracted: req.body.HowOftDisctracted,
@@ -210,7 +227,7 @@ app.post('/submitSurvey', async (req, res) => {
             BotheredByWorries: req.body.BotheredByWorries,
             DiffConcentration: req.body.DiffConcentration,
             HowOftCompare: req.body.HowOftCompare,
-            CompFeelings: req.body.CompFeelings,
+            fCompFeelings: req.body.CompFeelings,
             OftValidation: req.body.OftValidation,
             OftDepressed: req.body.OftDepressed,
             DailyActFluctuate: req.body.DailyActFluctuate,
@@ -221,6 +238,7 @@ app.post('/submitSurvey', async (req, res) => {
 
     res.send('Survey submitted successfully!');
 });
+
 
 
 
