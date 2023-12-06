@@ -10,11 +10,11 @@ dotenv.config();
 
 // Extract environment variables
 const ENV_VARIABLES = {
-    dbHost: process.env.DATABASE_HOST,
-    dbUser: process.env.DATABASE_USER,
-    dbPassword: process.env.DATABASE_PASSWORD,
-    dbName: process.env.DATABASE_NAME,
-    appPort: process.env.PORT || 3000,
+    dbHost: process.env.DATABASE_HOST || 'provomentalhealth.cgrlbkhl90jg.us-east-1.rds.amazonaws.com',
+    dbUser: process.env.DATABASE_USER || 'postgres',
+    dbPassword: process.env.DATABASE_PASSWORD || 'intexadmin',
+    dbName: process.env.DATABASE_NAME || 'intexdb',
+    appPort: process.env.PORT || 5432,
 };
 
 // Create an instance of Express
