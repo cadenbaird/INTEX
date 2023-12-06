@@ -97,6 +97,7 @@ app.post('/loginpage', async (req, res) => {
 
 
 //here is a random note to test
+//Hi!
 // Report Page
 app.get('/report', (req, res) => {
     res.render('report'); // Render your report form
