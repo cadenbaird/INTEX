@@ -150,6 +150,7 @@ app.post('/submitSurvey', async (req, res) => {
 
 // Start the server
 const port = ENV_VARIABLES.appPort;
+
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 })
