@@ -76,8 +76,36 @@ app.get('/loginpage', (req, res) => {
 });
 
 app.post('/loginpage', async (req, res) => {
-    const { username, password } = req.body;
-});
+    var user = await knex('userstorage')
+        .where({
+          Username: req.body.username,
+          Password: req.body.password,
+        })
+        .first();
+  
+      if (user) {
+        // Set a cookie to indicate the user is logged in
+        res.cookie('loggedIn', 'yes');
+  
+        res.render('report');
+      } 
+      else {
+        res.send('Your username and/or password are incorrect.');
+      }
+    });
+
+//app.post('/loginpage', async (req, res) => {
+    //if (knex(userstorage).contains({
+        //Username: req.body.username,
+        //Password: req.body.password
+    //})){
+        //post to localstorage that loggedIn = yes
+        //res.render("report")
+    //}
+    //else{
+        //res.send('Your username and/or password are incorrect.')
+    //}
+//});
 
 
 // Report Page
