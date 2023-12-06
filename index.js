@@ -147,8 +147,8 @@ app.get("/editUser/:id", (req, res) => {
                 "OftDepressed",
                 "DailyActFluctuate",
                 "SleepIssues",
-                "DataFrom").from("provoID").where("participantID", req.params.id).then(provoID => {
-                    res.render("editUser", {fulldata: provoID});
+                "DataFrom").from("provoID").where("participantID", req.params.id).then(fulldata => {
+                    res.render("editUser", {fulldata: fulldata});
                 }).catch( err => {
                     console.log(err);
                     res.status(500).json({err});
@@ -156,33 +156,33 @@ app.get("/editUser/:id", (req, res) => {
 });
 
 app.post("/editUser", (req, res) => {
-    knex("provoID").where("participantID", parseInt(req.body.participantID)).update({
-        participantID: parseInt(req.body.ParticipantID),
-        date: req.body.Date,
-        time: req.body.Time,
-        age: parseInt(req.body.Age),
-        gender: req.body.Gender,
-        relationshipStatus: req.body.RelationshipStatus,
-        occupationStatus: req.body.OccupationStatus,
-        organization: req.body.Organization,
-        doYouUseSocialMedia: req.body.DoYouUseSocialMedia,
-        socialMediaNum: parseInt(req.body.SocialMediaNum),
-        smPlatforms: req.body.SMPlatforms,
-        avgTime: req.body.AvgTime,
-        responseID: parseInt(req.body.ResponseID),
-        noSpecPurpose: parseInt(req.body.NoSpecPurpose),
-        howOftDisctracted: parseInt(req.body.HowOftDisctracted),
-        restless: parseInt(req.body.Restless),
-        howDistracted: parseInt(req.body.HowDistracted),
-        botheredByWorries: parseInt(req.body.BotheredByWorries),
-        diffConcentration: parseInt(req.body.DiffConcentration),
-        howOftCompare: parseInt(req.body.HowOftCompare),
-        compFeelings: parseInt(req.body.CompFeelings),
-        oftValidation: parseInt(req.body.OftValidation),
-        oftDepressed: parseInt(req.body.OftDepressed),
-        dailyActFluctuate: parseInt(req.body.DailyActFluctuate),
-        sleepIssues: parseInt(req.body.SleepIssues),
-        dataFrom: req.body.DataFrom,
+    knex("provoID").where("participantID", parseInt(req.body.ParticipantID)).update({
+        ParticipantID: parseInt(req.body.ParticipantID),
+        Date: req.body.Date,
+        Time: req.body.Time,
+        Age: parseInt(req.body.Age),
+        Gender: req.body.Gender,
+        RelationshipStatus: req.body.RelationshipStatus,
+        OccupationStatus: req.body.OccupationStatus,
+        Organization: req.body.Organization,
+        DoYouUseSocialMedia: req.body.DoYouUseSocialMedia,
+        SocialMediaNum: parseInt(req.body.SocialMediaNum),
+        SmPlatforms: req.body.SMPlatforms,
+        AvgTime: req.body.AvgTime,
+        ResponseID: parseInt(req.body.ResponseID),
+        NoSpecPurpose: parseInt(req.body.NoSpecPurpose),
+        HowOftDisctracted: parseInt(req.body.HowOftDisctracted),
+        Restless: parseInt(req.body.Restless),
+        HowDistracted: parseInt(req.body.HowDistracted),
+        BotheredByWorries: parseInt(req.body.BotheredByWorries),
+        DiffConcentration: parseInt(req.body.DiffConcentration),
+        HowOftCompare: parseInt(req.body.HowOftCompare),
+        CompFeelings: parseInt(req.body.CompFeelings),
+        OftValidation: parseInt(req.body.OftValidation),
+        OftDepressed: parseInt(req.body.OftDepressed),
+        DailyActFluctuate: parseInt(req.body.DailyActFluctuate),
+        SleepIssues: parseInt(req.body.SleepIssues),
+        DataFrom: req.body.DataFrom,
         
     }).then(provoID => {
         res.redirect("/report");
