@@ -227,12 +227,12 @@ app.post('/submitSurvey', async (req, res) => {
             ParticipantID: req.body.participantID,
             Date: currentDate,
             Time: currentTime,
-            Age: req.body.age,
-            Gender: req.body.gender,
-            RelationshipStatus: req.body.relationshipStatus,
-            OccupationStatus: req.body.occupationStatus,
-            Organization: req.body.affiliatedOrganizations.join(', '),
-            DoYouUseSocialMedia: req.body.useSocialMedia,
+            Age: req.body.Age,
+            Gender: req.body.Gender,
+            RelationshipStatus: req.body.RelationshipStatus,
+            OccupationStatus: req.body.OccupationStatus,
+            Organization: req.body.Organizations.join(', '),
+            DoYouUseSocialMedia: req.body.UseSocialMedia,
             SMPlatforms: selectedPlatform, // Inserting one platform at a time
             SocialMediaNum: socialMediaNum, // Use the mapped SocialMediaNum
             AvgTime: req.body.AvgTime,
