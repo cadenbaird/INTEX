@@ -110,39 +110,42 @@ app.post('/submitSurvey', async (req, res) => {
     // Get the current date and time
     var currentDate = moment().format('MM-DD-YYYY');
     var currentTime = moment().format('HH:mm:ss');
-    //Insert data into the database using knex for each selected social media platform
-    for (const SMPlatforms of whatSocialMedia) {
-    knex('provoID').insert({
-                ParticipantID: req.body.participantID,
-                Date: currentDate,
-                Time: currentTime,
-                Age: req.body.age,
-                Gender: req.body.gender,
-                RelationshipStatus: req.body.relationshipStatus,
-                OccupationStatus: req.body.occupationStatus,
-                Organization: req.body.affiliatedOrganizations.join(', '),
-                DoYouUseSocialMedia: req.body.useSocialMedia,
-                SMPlatforms: req.body.SMPlatforms, // Inserting one platform at a time
-                AvgTime: req.body.AvgTime,
-                NoSpecPurpose: req.body.NoSpecPurpose,
-                HowOftDistracted: req.body.HowOftDisctracted,
-                Restless: req.body.Restless,
-                HowDistracted: req.body.HowDistracted,
-                BotheredByWorries: req.body.BotheredByWorries,
-                DiffConcentration: req.body.DiffConcentration,
-                HowOftCompare: req.body.HowOftCompare,
-                fCompFeelings: req.body.CompFeelings,
-                OftValidation: req.body.OftValidation,
-                OftDepressed: req.body.OftDepressed,
-                DailyActFluctuate: req.body.DailyActFluctuate,
-                SleepIssues: req.body.SleepIssues,
-                DataFrom: 'Provo'
-            }).then(myResponse => {
-                res.send('Survey submitted successfully!')
-             })
-        }
+    
+    // Assuming SMPlatforms is an array from the request body
+    for (const selectedPlatform of req.body.SMPlatforms) {
+        // Insert data into the database using knex for each selected social media platform
+        await knex('provoID').insert({
+            ParticipantID: req.body.participantID,
+            Date: currentDate,
+            Time: currentTime,
+            Age: req.body.age,
+            Gender: req.body.gender,
+            RelationshipStatus: req.body.relationshipStatus,
+            OccupationStatus: req.body.occupationStatus,
+            Organization: req.body.affiliatedOrganizations.join(', '),
+            DoYouUseSocialMedia: req.body.useSocialMedia,
+            SMPlatforms: selectedPlatform, // Inserting one platform at a time
+            AvgTime: req.body.AvgTime,
+            NoSpecPurpose: req.body.NoSpecPurpose,
+            HowOftDistracted: req.body.HowOftDisctracted,
+            Restless: req.body.Restless,
+            HowDistracted: req.body.HowDistracted,
+            BotheredByWorries: req.body.BotheredByWorries,
+            DiffConcentration: req.body.DiffConcentration,
+            HowOftCompare: req.body.HowOftCompare,
+            CompFeelings: req.body.CompFeelings,
+            OftValidation: req.body.OftValidation,
+            OftDepressed: req.body.OftDepressed,
+            DailyActFluctuate: req.body.DailyActFluctuate,
+            SleepIssues: req.body.SleepIssues,
+            DataFrom: 'Provo'
+        });
+    }
 
-    });
+    res.send('Survey submitted successfully!');
+});
+
+
 
 // Start the server
 const port = ENV_VARIABLES.appPort;
