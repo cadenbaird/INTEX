@@ -5,41 +5,48 @@ Ability to create user account and enter personal details
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Provo Social - Create Account</title>
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="/css/landingpage.css" rel="stylesheet" />
-      </head>
-<body style="background-image: url('https://images.unsplash.com/photo-1574111946803-2f285aeb5360?q=80&w=3164&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-<!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Provo Social - Create Account</title>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <!-- Font Awesome icons (free version)-->
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+  <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="/css/landingpage.css" rel="stylesheet" />
+</head>
+
+<body
+  style="background-image: url('https://images.unsplash.com/photo-1574111946803-2f285aeb5360?q=80&w=3164&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" style="color: rgb(255, 255, 255);" href="/">Home</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            Menu
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="/survey" style="color: rgb(255, 255, 255);">Survey</a></li>
-                <li class="nav-item"><a class="nav-link" href="/ourdata" style="color: rgb(255, 250, 250);">Our Data</a></li>
-                <li class="nav-item"><a class="nav-link" href="/account" style="color: rgb(255, 255, 255);">Login</a></li>
-            </ul>
-        </div>
+      <a class="navbar-brand" style="color: rgb(255, 255, 255);" href="/">Home</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/survey" style="color: rgb(255, 255, 255);">Survey</a></li>
+          <li class="nav-item"><a class="nav-link" href="/ourdata" style="color: rgb(255, 250, 250);">Our Data</a></li>
+          <li class="nav-item"><a class="nav-link" href="/account" style="color: rgb(255, 255, 255);">Login</a></li>
+        </ul>
+      </div>
     </div>
   </nav>
-  
-  
+
+
   <div class="container-fluid ps-md-0">
     <div class="row g-0">
       <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
@@ -52,25 +59,27 @@ Ability to create user account and enter personal details
                 <br>
                 <br>
                 <h3 class="login-heading mb-4" style="color: rgb(255, 255, 255)">User Signup</h3>
-  
+
                 <!-- Sign Up Form -->
                 <form action="/createaccount" method="POST">
                   <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username"
+                      required>
                     <label for="username">Create a username:</label>
                   </div>
-  
+
                   <div class="form-floating mb-3">
                     <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                     <label for="password">Create a password:</label>
                   </div>
-  
+
                   <div class="form-check mb-3">
                     <!-- Add your form-check content here if needed -->
                   </div>
-  
+
                   <div class="d-grid">
-                    <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit">Sign Up</button>
+                    <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit">Sign
+                      Up</button>
                     <div class="text-center">
                       <!-- Add your additional content here if needed -->
                     </div>
@@ -86,4 +95,5 @@ Ability to create user account and enter personal details
 
 
 </body>
+
 </html>
