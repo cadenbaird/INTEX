@@ -10,7 +10,7 @@ Ability to create user account and enter personal details
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Provo Social - Login</title>
+        <title>Provo Social - Create Account</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -38,22 +38,52 @@ Ability to create user account and enter personal details
         </div>
     </div>
   </nav>
-    <h1>User Signup</h1>
+  
+  
+  <div class="container-fluid ps-md-0">
+    <div class="row g-0">
+      <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+      <div class="col-md-8 col-lg-6">
+        <div class="login d-flex align-items-center py-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-9 col-lg-8 mx-auto">
+                <br>
+                <br>
+                <br>
+                <h3 class="login-heading mb-4" style="color: rgb(255, 255, 255)">User Signup</h3>
+  
+                <!-- Sign Up Form -->
+                <form action="/createaccount" method="POST">
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                    <label for="username">Create a username:</label>
+                  </div>
+  
+                  <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                    <label for="password">Create a password:</label>
+                  </div>
+  
+                  <div class="form-check mb-3">
+                    <!-- Add your form-check content here if needed -->
+                  </div>
+  
+                  <div class="d-grid">
+                    <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit">Sign Up</button>
+                    <div class="text-center">
+                      <!-- Add your additional content here if needed -->
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <form action="/createaccount" method="POST">
-        <label for="username">Create a username:</label>
-        <input type="text" id="username" name="username" required>
-
-        <br>
-
-        <label for="password">Choose a password:</label>
-        <input type="password" id="password" name="password" required>
-
-        <br>
-
-
-        <input type="submit" value="Sign Up">
-    </form>
 
 </body>
 </html>
