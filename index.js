@@ -100,12 +100,8 @@ app.post('/loginpage', async (req, res) => {
 //Hi!
 // Report Page
 app.get('/report', (req, res) => {
-    res.render('report'); // Render your report form
-});
-
-app.get('/report', (req, res) => {
     knex.select().from("provoID").then(provoID => {
-        res.render("report", {fulldata: provoID});
+        res.render('report', {fulldata: provoID});
     });
 });
 
