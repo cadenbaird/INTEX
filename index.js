@@ -123,7 +123,7 @@ app.post('/submitSurvey', async (req, res) => {
     var currentTime = moment().format('HH:mm:ss');
     //Insert data into the database using knex for each selected social media platform
     for (const SMPlatforms of whatSocialMedia) {
-    knex('provo_ID').insert({
+    knex('provoID').insert({
                 ParticipantID: req.body.participantID,
                 Date: currentDate,
                 Time: currentTime,
