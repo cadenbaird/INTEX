@@ -67,7 +67,7 @@ app.get('/createaccount', (req, res) => {
 app.post('/createaccount', async (req, res) => {
     knex('userstorage').insert({
         Username: req.body.username,
-        Password: req.body.password
+        Password: req.body.password,
     });
 });
 
@@ -102,6 +102,83 @@ app.post('/loginpage', async (req, res) => {
 app.get('/report', (req, res) => {
     knex.select().from("provoID").then(provoID => {
         res.render('report', {fulldata: provoID});
+    });
+});
+
+app.get("/editUser/:id", (req, res) => {
+    knex.select("ParticipantID",
+                "Date",
+                "Time",
+                "Age",
+                "Gender",
+                "RelationshipStatus",
+                "OccupationStatus",
+                "Organization",
+                "DoYouUseSocialMedia",
+                "SocialMediaNum",
+                "SMPlatforms",
+                "AvgTime",
+                "ResponseID",
+                "NoSpecPurpose",
+                "HowOftDisctracted",
+                "Restless",
+                "HowDistracted",
+                "BotheredByWorries",
+                "DiffConcentration",
+                "HowOftCompare",
+                "CompFeelings",
+                "OftValidation",
+                "OftDepressed",
+                "DailyActFluctuate",
+                "SleepIssues",
+                "DataFrom").from("provoID").where("participantID", req.params.id).then(provoID => {
+                    res.render("editUser", {fulldata: provoID});
+                }).catch( err => {
+                    console.log(err);
+                    res.status(500).json({err});
+                });
+});
+
+app.post("/editUser", (req, res) => {
+    knex("provoID").where("participantID", parseInt(req.body.participantID)).update({
+        participantID: parseInt(req.body.ParticipantID),
+        date: req.body.Date,
+        time: req.body.Time,
+        age: parseInt(req.body.Age),
+        gender: req.body.Gender,
+        relationshipStatus: req.body.RelationshipStatus,
+        occupationStatus: req.body.OccupationStatus,
+        organization: req.body.Organization,
+        doYouUseSocialMedia: req.body.DoYouUseSocialMedia,
+        socialMediaNum: parseInt(req.body.SocialMediaNum),
+        smPlatforms: req.body.SMPlatforms,
+        avgTime: req.body.AvgTime,
+        responseID: parseInt(req.body.ResponseID),
+        noSpecPurpose: parseInt(req.body.NoSpecPurpose),
+        howOftDisctracted: parseInt(req.body.HowOftDisctracted),
+        restless: parseInt(req.body.Restless),
+        howDistracted: parseInt(req.body.HowDistracted),
+        botheredByWorries: parseInt(req.body.BotheredByWorries),
+        diffConcentration: parseInt(req.body.DiffConcentration),
+        howOftCompare: parseInt(req.body.HowOftCompare),
+        compFeelings: parseInt(req.body.CompFeelings),
+        oftValidation: parseInt(req.body.OftValidation),
+        oftDepressed: parseInt(req.body.OftDepressed),
+        dailyActFluctuate: parseInt(req.body.DailyActFluctuate),
+        sleepIssues: parseInt(req.body.SleepIssues),
+        dataFrom: req.body.DataFrom,
+        
+    }).then(provoID => {
+        res.redirect("/report");
+    });
+});
+
+app.post("/deleteCountry/:id", (req, res) => {
+    knex("provoID").where("participantID", req.params.id).del().then(provoID => {
+        res.redirect("/report");
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({err});
     });
 });
 
@@ -152,4 +229,4 @@ const port = ENV_VARIABLES.appPort;
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
-})
+});

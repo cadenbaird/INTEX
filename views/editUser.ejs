@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/editUser" method="POST">
+        <fieldset style="width: 0px;">
+            <legend>Edit a User:</legend>
+            <!-- ParticipantID -->
+            <input type="text" id="ParticipantID" name="ParticipantID" value="<%= provoID[0].ParticipantID %>">
+            <label for="ParticipantID">Participant ID:</label>
+            <br><br>
+            <!-- Date -->
+            <input type="text" id="Date" name="Date" value="<%= provoID[0].Date %>">
+            <label for="Date">Date:</label>
+            <br><br>
+            <!-- Time -->
+            <input type="text" id="Time" name="Time" value="<%= provoID[0].Time %>">
+            <label for="Time">Time:</label>
+            <br><br>
+            <!-- Age -->
+            <input type="text" id="Age" name="Age" value="<%= provoID[0].Age %>">
+            <label for="Age">Age:</label>
+            <br><br>
+            <!-- Gender -->
+            <input type="text" id="Gender" name="Gender" value="<%= provoID[0].Gender %>">
+            <label for="Gender">Gender:</label>
+            <br><br>
+            <!-- RelationshipStatus -->
+            <input type="text" id="RelationshipStatus" name="RelationshipStatus" value="<%= provoID[0].RelationshipStatus %>">
+            <label for="RelationshipStatus">Relationship Status:</label>
+            <br><br>
+            <!-- OccupationStatus -->
+            <input type="text" id="OccupationStatus" name="OccupationStatus" value="<%= provoID[0].OccupationStatus %>">
+            <label for="OccupationStatus">Occupation Status:</label>
+            <br><br>
+            <!-- Organization -->
+            <input type="text" id="Organization" name="Organization" value="<%= provoID[0].Organization %>">
+            <label for="Organization">Organization:</label>
+            <br><br>
+            <!-- DoYouUseSocialMedia -->
+            <input type="text" id="DoYouUseSocialMedia" name="DoYouUseSocialMedia" value="<%= provoID[0].DoYouUseSocialMedia %>">
+            <label for="DoYouUseSocialMedia">Do You Use Social Media:</label>
+            <br><br>
+            <!-- SocialMediaNum -->
+            <input type="text" id="SocialMediaNum" name="SocialMediaNum" value="<%= provoID[0].SocialMediaNum %>">
+            <label for="SocialMediaNum">Social Media Number:</label>
+            <br><br>
+            <!-- SMPlatforms -->
+            <input type="text" id="SMPlatforms" name="SMPlatforms" value="<%= provoID[0].SMPlatforms %>">
+            <label for="SMPlatforms">Social Media Platforms:</label>
+            <br><br>
+            <!-- AvgTime -->
+            <input type="text" id="AvgTime" name="AvgTime" value="<%= provoID[0].AvgTime %>">
+            <label for="AvgTime">Average Time:</label>
+            <br><br>
+            <!-- ResponseID -->
+            <input type="text" id="ResponseID" name="ResponseID" value="<%= provoID[0].ResponseID %>">
+            <label for="ResponseID">Response ID:</label>
+            <br><br>
+            <!-- NoSpecPurpose -->
+            <input type="text" id="NoSpecPurpose" name="NoSpecPurpose" value="<%= provoID[0].NoSpecPurpose %>">
+            <label for="NoSpecPurpose">No Specific Purpose:</label>
+            <br><br>
+            <!-- HowOftDisctracted -->
+            <input type="text" id="HowOftDisctracted" name="HowOftDisctracted" value="<%= provoID[0].HowOftDisctracted %>">
+            <label for="HowOftDisctracted">How Often Distracted:</label>
+            <br><br>
+            <!-- Restless -->
+            <input type="text" id="Restless" name="Restless" value="<%= provoID[0].Restless %>">
+            <label for="Restless">Restless:</label>
+            <br><br>
+            <!-- HowDistracted -->
+            <input type="text" id="HowDistracted" name="HowDistracted" value="<%= provoID[0].HowDistracted %>">
+            <label for="HowDistracted">How Distracted:</label>
+            <br><br>
+            <!-- BotheredByWorries -->
+            <input type="text" id="BotheredByWorries" name="BotheredByWorries" value="<%= provoID[0].BotheredByWorries %>">
+            <label for="BotheredByWorries">Bothered by Worries:</label>
+            <br><br>
+            <!-- DiffConcentration -->
+            <input type="text" id="DiffConcentration" name="DiffConcentration" value="<%= provoID[0].DiffConcentration %>">
+            <label for="DiffConcentration">Difficulty Concentrating:</label>
+            <br><br>
+            <!-- HowOftCompare -->
+            <input type="text" id="HowOftCompare" name="HowOftCompare" value="<%= provoID[0].HowOftCompare %>">
+            <label for="HowOftCompare">How Often Compare:</label>
+            <br><br>
+            <!-- CompFeelings -->
+            <input type="text" id="CompFeelings" name="CompFeelings" value="<%= provoID[0].CompFeelings %>">
+            <label for="CompFeelings">Comparison Feelings:</label>
+            <br><br>
+            <!-- OftValidation -->
+            <input type="text" id="OftValidation" name="OftValidation" value="<%= provoID[0].OftValidation %>">
+            <label for="OftValidation">Often Seek Validation:</label>
+            <br><br>
+            <!-- OftDepressed -->
+            <input type="text" id="OftDepressed" name="OftDepressed" value="<%= provoID[0].OftDepressed %>">
+            <label for="OftDepressed">Often Depressed:</label>
+            <br><br>
+            <!-- DailyActFluctuate -->
+            <input type="text" id="DailyActFluctuate" name="DailyActFluctuate" value="<%= provoID[0].DailyActFluctuate %>">
+            <label for="DailyActFluctuate">Daily Activities Fluctuate:</label>
+            <br><br>
+            <!-- SleepIssues -->
+            <input type="text" id="SleepIssues" name="SleepIssues" value="<%= provoID[0].SleepIssues %>">
+            <label for="SleepIssues">Sleep Issues:</label>
+            <br><br>
+            <!-- DataFrom -->
+            <input type="text" id="DataFrom" name="DataFrom" value="<%= provoID[0].DataFrom %>">
+            <label for="DataFrom">Data From:</label>
+
+        </fieldset>
+    </form>
+</body>
+</html>

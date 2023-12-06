@@ -13,7 +13,7 @@ Dropdown list to filter to a specific person -->
 <body>
     <label><b>Full Database:</b></label>
     <br><br> 
-    <table style="width: 100%; border: 1px solid black;">
+    <table style="width: 100%; background-color: antiquewhite; border: 1px solid black;">
         <thead style="background-color: cornflowerblue; color:white;">
             <tr>
                 <th style="text-align: left;">ParticipantID</th>
@@ -45,30 +45,40 @@ Dropdown list to filter to a specific person -->
         <tbody style="font-family: Arial; font-size: 9pt;">
             <% for (let iCount = 0; iCount < fulldata.length; iCount++) { %>
                 <tr>
-                    <td><%= fulldata[iCount].ParticipantID %></td>
-                    <td><%= fulldata[iCount].Date %></td>
-                    <td><%= fulldata[iCount].Time %></td>
-                    <td><%= fulldata[iCount].Age %></td>
-                    <td><%= fulldata[iCount].Gender %></td>
-                    <td><%= fulldata[iCount].RelationshipStatus %></td>
-                    <td><%= fulldata[iCount].OccupationStatus %></td>
-                    <td><%= fulldata[iCount].Organization %></td>
-                    <td><%= fulldata[iCount].DoYouUseSocialMedia %></td>
-                    <td><%= fulldata[iCount].SocialMediaNum %></td>
-                    <td><%= fulldata[iCount].SMPlatforms %></td>
-                    <td><%= fulldata[iCount].AvgTime %></td>
-                    <td><%= fulldata[iCount].ResponseID %></td>
-                    <td><%= fulldata[iCount].NoSpecPurpose %></td>
-                    <td><%= fulldata[iCount].HowOftDisctracted %></td>
-                    <td><%= fulldata[iCount].Restless %></td>
-                    <td><%= fulldata[iCount].HowDistracted %></td>
-                    <td><%= fulldata[iCount].HowOftCompare %></td>
-                    <td><%= fulldata[iCount].CompFeelings %></td>
-                    <td><%= fulldata[iCount].OftValidation %></td>
-                    <td><%= fulldata[iCount].OftDepressed %></td>
-                    <td><%= fulldata[iCount].DailyActFluctuate %></td>
-                    <td><%= fulldata[iCount].SleepIssues %></td>
-                    <td><%= fulldata[iCount].DataFrom %></td>
+                    <td style="text-align: center;"><%= fulldata[iCount].ParticipantID %></td>
+                    <td style="text-align: center;"><%= fulldata[iCount].Date %></td>
+                    <td style="text-align: center;"><%= fulldata[iCount].Time %></td>
+                    <td style="text-align: center;"><%= fulldata[iCount].Age %></td>
+                    <td style="text-align: center;"><%= fulldata[iCount].Gender %></td>
+                    <td style="text-align: center;"><%= fulldata[iCount].RelationshipStatus %></td>
+                    <td style="text-align: center;"><%= fulldata[iCount].OccupationStatus %></td>
+                    <td style="text-align: center;"><%= fulldata[iCount].Organization %></td>
+                    <td style="text-align: center;"><%= fulldata[iCount].DoYouUseSocialMedia %></td>
+                    <td style="text-align: center;"><%= fulldata[iCount].SocialMediaNum %></td>
+                    <td style="text-align: center;"><%= fulldata[iCount].SMPlatforms %></td>
+                    <td style="text-align: center;"><%= fulldata[iCount].AvgTime %></td>
+                    <td style="text-align: center;"><%= fulldata[iCount].ResponseID %></td>
+                    <td style="text-align: center;"><%= fulldata[iCount].NoSpecPurpose %></td>
+                    <td style="text-align: center;"><%= fulldata[iCount].HowOftDisctracted %></td>
+                    <td style="text-align: center;"><%= fulldata[iCount].Restless %></td>
+                    <td style="text-align: center;"><%= fulldata[iCount].HowDistracted %></td>
+                    <td style="text-align: center;"><%= fulldata[iCount].HowOftCompare %></td>
+                    <td style="text-align: center;"><%= fulldata[iCount].CompFeelings %></td>
+                    <td style="text-align: center;"><%= fulldata[iCount].OftValidation %></td>
+                    <td style="text-align: center;"><%= fulldata[iCount].OftDepressed %></td>
+                    <td style="text-align: center;"><%= fulldata[iCount].DailyActFluctuate %></td>
+                    <td style="text-align: center;"><%= fulldata[iCount].SleepIssues %></td>
+                    <td style="text-align: center;"><%= fulldata[iCount].DataFrom %></td>
+                    <td style="text-align: center;">
+                        <form action="/editUser/<%= provoID[iCount].ParticipantID %>" method="GET">
+                            <button type="submit">Edit User</button>
+                        </form>
+                    </td>
+                    <td style="text-align: center;">
+                        <form action="/deleteUser/<%= provoID[iCount].ParticipantID %>" method="POST">
+                            <button type="submit">Delete User</button>
+                        </form>
+                    </td>
                 <tr>
             <% } %>
         </tbody> 
