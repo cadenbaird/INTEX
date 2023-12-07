@@ -104,7 +104,7 @@ app.post('/loginpage', async (req, res) => {
         // Set a cookie to indicate the user is logged in
         res.cookie('loggedIn', 'yes');
   
-        res.render('report');
+        res.redirect('/report');
       } 
       else {
         res.send('Your username and/or password are incorrect.');
