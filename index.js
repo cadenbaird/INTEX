@@ -108,8 +108,7 @@ app.get('/report', (req, res) => {
 });
 
 app.get("/editUser/:id", (req, res) => {
-    knex.select("ParticipantID",
-                "Date",
+    knex.select("Date",
                 "Time",
                 "Age",
                 "Gender",
@@ -141,42 +140,63 @@ app.get("/editUser/:id", (req, res) => {
                 });
 });
 
-app.post("/editUser", (req, res) => {
-    knex("provoID").where("participantID", parseInt(req.body.ParticipantID)).update({
-        ParticipantID: parseInt(req.body.ParticipantID),
-        Date: req.body.Date,
-        Time: req.body.Time,
-        Age: parseInt(req.body.Age),
-        Gender: req.body.Gender,
-        RelationshipStatus: req.body.RelationshipStatus,
-        OccupationStatus: req.body.OccupationStatus,
-        Organization: req.body.Organization,
-        DoYouUseSocialMedia: req.body.DoYouUseSocialMedia,
-        SocialMediaNum: parseInt(req.body.SocialMediaNum),
-        SmPlatforms: req.body.SMPlatforms,
-        AvgTime: req.body.AvgTime,
-        ResponseID: parseInt(req.body.ResponseID),
-        NoSpecPurpose: parseInt(req.body.NoSpecPurpose),
-        HowOftDisctracted: parseInt(req.body.HowOftDisctracted),
-        Restless: parseInt(req.body.Restless),
-        HowDistracted: parseInt(req.body.HowDistracted),
-        BotheredByWorries: parseInt(req.body.BotheredByWorries),
-        DiffConcentration: parseInt(req.body.DiffConcentration),
-        HowOftCompare: parseInt(req.body.HowOftCompare),
-        CompFeelings: parseInt(req.body.CompFeelings),
-        OftValidation: parseInt(req.body.OftValidation),
-        OftDepressed: parseInt(req.body.OftDepressed),
-        DailyActFluctuate: parseInt(req.body.DailyActFluctuate),
-        SleepIssues: parseInt(req.body.SleepIssues),
-        DataFrom: req.body.DataFrom,
-        
-    }).then(provoID => {
-        res.redirect("/report");
-    });
+app.post('/editUser', async (req, res) => {
+    // Get the current date and time
+    var currentDate = moment().format('MM-DD-YYYY');
+    var currentTime = moment().format('HH:mm:ss');
+
+    // Define a mapping between selectedPlatform and SocialMediaNum
+    const platformToNum = {
+        'Facebook': 1,
+        'Twitter': 2,
+        'Instagram': 3,
+        'YouTube': 4,
+        'Discord': 5,
+        'Reddit': 6,
+        'Pinterest': 7,
+        'TikTok': 8,
+        // Add more platforms as needed
+    };
+
+    // Assuming SMPlatforms is an array from the request body
+    for (const selectedPlatform of req.body.SMPlatforms) {
+        // Get the corresponding SocialMediaNum based on the selected platform
+        const socialMediaNum = platformToNum[selectedPlatform];
+
+        // Insert data into the database using knex for each selected social media platform
+        await knex('provoID').insert({
+            Date: currentDate,
+            Time: currentTime,
+            Age: req.body.Age,
+            Gender: req.body.Gender,
+            RelationshipStatus: req.body.RelationshipStatus,
+            OccupationStatus: req.body.OccupationStatus,
+            Organization: req.body.Organization,
+            DoYouUseSocialMedia: req.body.DoYouUseSocialMedia,
+            SMPlatforms: selectedPlatform, // Inserting one platform at a time
+            SocialMediaNum: socialMediaNum, // Use the mapped SocialMediaNum
+            AvgTime: req.body.AvgTime,
+            NoSpecPurpose: req.body.NoSpecPurpose,
+            HowOftDisctracted: req.body.HowOftDisctracted,
+            Restless: req.body.Restless,
+            HowDistracted: req.body.HowDistracted,
+            BotheredByWorries: req.body.BotheredByWorries,
+            DiffConcentration: req.body.DiffConcentration,
+            HowOftCompare: req.body.HowOftCompare,
+            CompFeelings: req.body.CompFeelings,
+            OftValidation: req.body.OftValidation,
+            OftDepressed: req.body.OftDepressed,
+            DailyActFluctuate: req.body.DailyActFluctuate,
+            SleepIssues: req.body.SleepIssues,
+            DataFrom: 'Provo'
+        });
+    }
+
+    res.redirect('/report');
 });
 
-app.post("/deleteCountry/:id", (req, res) => {
-    knex("provoID").where("participantID", req.params.id).del().then(provoID => {
+app.post("/deleteUser/:id", (req, res) => {
+    knex("provoID").where("ParticipantID", req.params.id).del().then(provoID => {
         res.redirect("/report");
     }).catch(err => {
         console.log(err);
