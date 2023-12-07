@@ -233,11 +233,12 @@ app.post('/submitSurvey', async (req, res) => {
         'Facebook': 1,
         'Twitter': 2,
         'Instagram': 3,
-        'YouTube': 4,
+        'Youtube': 4,
         'Discord': 5,
         'Reddit': 6,
         'Pinterest': 7,
         'TikTok': 8,
+        'Snapchat': 9,
         // Add more platforms as needed
     };
 
