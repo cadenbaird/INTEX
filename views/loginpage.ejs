@@ -42,7 +42,6 @@
   </nav>
 
 
-<<<<<<< HEAD
   <div class="container-fluid ps-md-0">
     <div class="row g-0">
       <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
@@ -57,47 +56,11 @@
                 <h3 class="login-heading mb-4" style="color: rgb(255, 255, 255)">Welcome back!</h3>
 
                 <!-- Sign In Form -->
-                <form>
+                <form method="POST" action="/loginpage">
                   <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" name="floatingInput"
-                      placeholder="name@example.com">
-                    <label for="floatingInput">Email address</label>
-=======
-    <div class="container-fluid ps-md-0">
-        <div class="row g-0">
-          <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
-          <div class="col-md-8 col-lg-6">
-            <div class="login d-flex align-items-center py-5">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-9 col-lg-8 mx-auto">
-                    <br>
-                    <br>
-                    <br>
-                    <h3 class="login-heading mb-4" style="color: rgb(255, 255, 255)">Welcome back!</h3>
-      
-                    <!-- Sign In Form -->
-                    <form method="POST" action="/loginpage">
-                      <div class="form-floating mb-3">
-                        <input type="username" class="form-control" id="floatingInput" name = "floatingInput" placeholder="username">
-                        <label for="floatingInput">Username</label>
-                      </div>
-                      <div class="form-floating mb-3">
-                        <input type="password" class="form-control" id="floatingPassword" name = "floatingPassword" placeholder="Password">
-                        <label for="floatingPassword">Password</label>
-                      </div>
-      
-                      <div class="form-check mb-3">
-                      </div>
-      
-                      <div class="d-grid">
-                        <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit">Sign in</button>
-                        <div class="text-center">
-                        </div>
-                      </div>
-      
-                    </form>
->>>>>>> 04ed5b054c63d95ab0b69247a077ed313012fe0d
+                    <input type="username" class="form-control" id="floatingInput" name="floatingInput"
+                      placeholder="username">
+                    <label for="floatingInput">Username</label>
                   </div>
                   <div class="form-floating mb-3">
                     <input type="password" class="form-control" id="floatingPassword" name="floatingPassword"
@@ -117,11 +80,17 @@
 
                 </form>
               </div>
+
+              <div class="form-check mb-3">
+              </div>
+
+              </form>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
 </body>
 
