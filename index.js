@@ -159,6 +159,7 @@ app.post('/editUser', async (req, res) => {
     };
 
     // Assuming SMPlatforms is an array from the request body
+    console.log(req.body.SMPlatforms);
     for (const selectedPlatform of req.body.SMPlatforms) {
         // Get the corresponding SocialMediaNum based on the selected platform
         const socialMediaNum = platformToNum[selectedPlatform];
