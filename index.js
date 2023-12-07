@@ -59,32 +59,18 @@ app.get('/account', (req, res) => {
     res.render('survey'); 
   });
 
-  // Middleware to check if the user is logged in
-const checkLoggedIn = (req, res, next) => {
-    // Check the presence of the 'loggedIn' cookie
-    if (req.cookies.loggedIn === 'yes') {
-      // User is logged in, proceed to the next middleware or route handler
-      next();
-    } else {
-      // User is not logged in, redirect to a login page or send an error response
-      res.status(401).send('Unauthorized - Please log in.');
-    }
-  };
-  
-// Apply middleware to routes that require authentication
-app.get('/createaccount', checkLoggedIn, (req, res) => {
-    res.render('createaccount');
+  app.get('/createaccount', (req, res) => {
+    res.render('createaccount'); 
   });
-  
-  app.post('/createaccount', checkLoggedIn, async (req, res) => {
+  //create account
+  app.post('/createaccount', async (req, res) => {
     // Insert data into the userstorage table
     await knex('userstorage').insert({
       Username: req.body.username,
       Password: req.body.password,
     });
-  
-    // Redirect to a page or send a response indicating success
-    res.redirect('/createaccount-success');
+    //send a response indicating success
+    res.send('Account created successfully!');
   });
   
 //login page
