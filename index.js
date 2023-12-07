@@ -95,8 +95,8 @@ app.get('/loginpage', (req, res) => {
 app.post('/loginpage', async (req, res) => {
     var user = await knex('userstorage')
         .where({
-          Username: req.body.username,
-          Password: req.body.password,
+          Username: req.body.floatingInput,
+          Password: req.body.floatingPassword,
         })
         .first();
   
@@ -217,6 +217,10 @@ app.post('/submitSurvey', async (req, res) => {
         // Add more platforms as needed
     };
 
+    var maxParticipantID = await knex('provoID').max('ParticipantID').first();
+    var ParticipantID = maxParticipantID.max + 1;
+
+
     // Assuming SMPlatforms is an array from the request body
     for (const selectedPlatform of req.body.SMPlatforms) {
         // Get the corresponding SocialMediaNum based on the selected platform
@@ -224,26 +228,26 @@ app.post('/submitSurvey', async (req, res) => {
 
         // Insert data into the database using knex for each selected social media platform
         await knex('provoID').insert({
-            ParticipantID: req.body.participantID,
+            ParticipantID: ParticipantID,
             Date: currentDate,
             Time: currentTime,
             Age: req.body.Age,
             Gender: req.body.Gender,
             RelationshipStatus: req.body.RelationshipStatus,
             OccupationStatus: req.body.OccupationStatus,
-            Organization: req.body.Organizations.join(', '),
-            DoYouUseSocialMedia: req.body.UseSocialMedia,
+            Organization: req.body.Organization,
+            DoYouUseSocialMedia: req.body.DoYouUseSocialMedia,
             SMPlatforms: selectedPlatform, // Inserting one platform at a time
             SocialMediaNum: socialMediaNum, // Use the mapped SocialMediaNum
             AvgTime: req.body.AvgTime,
             NoSpecPurpose: req.body.NoSpecPurpose,
-            HowOftDistracted: req.body.HowOftDisctracted,
+            HowOftDisctracted: req.body.HowOftDisctracted,
             Restless: req.body.Restless,
             HowDistracted: req.body.HowDistracted,
             BotheredByWorries: req.body.BotheredByWorries,
             DiffConcentration: req.body.DiffConcentration,
             HowOftCompare: req.body.HowOftCompare,
-            fCompFeelings: req.body.CompFeelings,
+            CompFeelings: req.body.CompFeelings,
             OftValidation: req.body.OftValidation,
             OftDepressed: req.body.OftDepressed,
             DailyActFluctuate: req.body.DailyActFluctuate,
