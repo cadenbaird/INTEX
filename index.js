@@ -217,7 +217,9 @@ app.post('/submitSurvey', async (req, res) => {
         // Add more platforms as needed
     };
 
-    var ParticipantID = knex('provoID').max('ParticipantID') + 1
+    var maxParticipantID = await knex('provoID').max('ParticipantID').first();
+    var ParticipantID = maxParticipantID.max + 1;
+
 
     // Assuming SMPlatforms is an array from the request body
     for (const selectedPlatform of req.body.SMPlatforms) {
