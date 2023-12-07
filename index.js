@@ -217,6 +217,8 @@ app.post('/submitSurvey', async (req, res) => {
         // Add more platforms as needed
     };
 
+    var ParticipantID = knex('provoID').max('ParticipantID') + 1
+
     // Assuming SMPlatforms is an array from the request body
     for (const selectedPlatform of req.body.SMPlatforms) {
         // Get the corresponding SocialMediaNum based on the selected platform
@@ -224,20 +226,20 @@ app.post('/submitSurvey', async (req, res) => {
 
         // Insert data into the database using knex for each selected social media platform
         await knex('provoID').insert({
-           // ParticipantID: req.body.participantID,
+            ParticipantID: ParticipantID,
             Date: currentDate,
             Time: currentTime,
             Age: req.body.Age,
             Gender: req.body.Gender,
             RelationshipStatus: req.body.RelationshipStatus,
             OccupationStatus: req.body.OccupationStatus,
-            Organization: req.body.Organization.join(', '),
+            Organization: req.body.Organization,
             DoYouUseSocialMedia: req.body.DoYouUseSocialMedia,
             SMPlatforms: selectedPlatform, // Inserting one platform at a time
             SocialMediaNum: socialMediaNum, // Use the mapped SocialMediaNum
             AvgTime: req.body.AvgTime,
             NoSpecPurpose: req.body.NoSpecPurpose,
-            HowOftDistracted: req.body.HowOftDisctracted,
+            HowOftDisctracted: req.body.HowOftDisctracted,
             Restless: req.body.Restless,
             HowDistracted: req.body.HowDistracted,
             BotheredByWorries: req.body.BotheredByWorries,
