@@ -11,69 +11,75 @@ Dropdown list to filter to a specific person -->
     <link rel="stylesheet" href="/content/css/styles.css">
 </head>
 <body>
-    <label><b>Full Database:</b></label>
+    <label><b>Admin Control Panel:</b></label>
+    <br>
+    <td style="text-align: center;">
+        <form>
+            <a class="btn btn-primary" href="/createaccount">Create Account</a></div>
+        </form>
+    </td>
     <br><br> 
     <table style="width: 100%; background-color: antiquewhite; border: 1px solid black;">
         <thead style="background-color: cornflowerblue; color:white;">
             <tr>
-                <th style="text-align: center;">ParticipantID</th>
-                    <th style="text-align: center;">Date</th>
-                    <th style="text-align: center;">Time</th>
-                    <th style="text-align: center;">Age</th>
-                    <th style="text-align: center;">Gender</th>
-                    <th style="text-align: center;">RelationshipStatus</th>
-                    <th style="text-align: center;">OccupationStatus</th>
-                    <th style="text-align: center;">Organization</th>
-                    <th style="text-align: center;">DoYouUseSocialMedia</th>
-                    <th style="text-align: center;">SocialMediaNum</th>
-                    <th style="text-align: center;">SMPlatforms</th>
-                    <th style="text-align: center;">AvgTime</th>
-                    <th style="text-align: center;">ResponseID</th>
-                    <th style="text-align: center;">NoSpecPurpose</th>
-                    <th style="text-align: center;">HowOftDisctracted</th>
-                    <th style="text-align: center;">Restless</th>
-                    <th style="text-align: center;">HowDistracted</th>
-                    <th style="text-align: center;">HowOftCompare</th>
-                    <th style="text-align: center;">CompFeelings</th>
-                    <th style="text-align: center;">OftValidation</th>
-                    <th style="text-align: center;">OftDepressed</th>
-                    <th style="text-align: center;">DailyActFluctuate</th>
-                    <th style="text-align: center;">SleepIssues</th>
-                    <th style="text-align: center;">DataFrom</th>
+                <th style="text-align: center; padding: 10px;">ParticipantID</th>
+                    <th style="text-align: center; padding: 10px;">Date</th>
+                    <th style="text-align: center; padding: 10px;">Time</th>
+                    <th style="text-align: center; padding: 10px;">Age</th>
+                    <th style="text-align: center; padding: 10px;">Gender</th>
+                    <th style="text-align: center; padding: 10px;">RelationshipStatus</th>
+                    <th style="text-align: center; padding: 10px;">OccupationStatus</th>
+                    <th style="text-align: center; padding: 10px;">Organization</th>
+                    <th style="text-align: center; padding: 10px;">DoYouUseSocialMedia</th>
+                    <th style="text-align: center; padding: 10px;">SocialMediaNum</th>
+                    <th style="text-align: center; padding: 10px;">SMPlatforms</th>
+                    <th style="text-align: center; padding: 10px;">AvgTime</th>
+                    <th style="text-align: center; padding: 10px;">ResponseID</th>
+                    <th style="text-align: center; padding: 10px;">NoSpecPurpose</th>
+                    <th style="text-align: center; padding: 10px;">HowOftDisctracted</th>
+                    <th style="text-align: center; padding: 10px;">Restless</th>
+                    <th style="text-align: center; padding: 10px;">HowDistracted</th>
+                    <th style="text-align: center; padding: 10px;">HowOftCompare</th>
+                    <th style="text-align: center; padding: 10px;">CompFeelings</th>
+                    <th style="text-align: center; padding: 10px;">OftValidation</th>
+                    <th style="text-align: center; padding: 10px;">OftDepressed</th>
+                    <th style="text-align: center; padding: 10px;">DailyActFluctuate</th>
+                    <th style="text-align: center; padding: 10px;">SleepIssues</th>
+                    <th style="text-align: center; padding: 10px;">DataFrom</th>
 
             </tr>
         </thead> 
         <tbody style="font-family: Arial; font-size: 9pt;">
             <% for (let iCount = 0; iCount < fulldata.length; iCount++) { %>
                 <tr>
-                    <td style="text-align: center;"><%= fulldata[iCount].ParticipantID %></td>
-                    <td style="text-align: center;"><%= fulldata[iCount].Date %></td>
-                    <td style="text-align: center;"><%= fulldata[iCount].Time %></td>
-                    <td style="text-align: center;"><%= fulldata[iCount].Age %></td>
-                    <td style="text-align: center;"><%= fulldata[iCount].Gender %></td>
-                    <td style="text-align: center;"><%= fulldata[iCount].RelationshipStatus %></td>
-                    <td style="text-align: center;"><%= fulldata[iCount].OccupationStatus %></td>
-                    <td style="text-align: center;"><%= fulldata[iCount].Organization %></td>
-                    <td style="text-align: center;"><%= fulldata[iCount].DoYouUseSocialMedia %></td>
-                    <td style="text-align: center;"><%= fulldata[iCount].SocialMediaNum %></td>
-                    <td style="text-align: center;"><%= fulldata[iCount].SMPlatforms %></td>
-                    <td style="text-align: center;"><%= fulldata[iCount].AvgTime %></td>
-                    <td style="text-align: center;"><%= fulldata[iCount].ResponseID %></td>
-                    <td style="text-align: center;"><%= fulldata[iCount].NoSpecPurpose %></td>
-                    <td style="text-align: center;"><%= fulldata[iCount].HowOftDisctracted %></td>
-                    <td style="text-align: center;"><%= fulldata[iCount].Restless %></td>
-                    <td style="text-align: center;"><%= fulldata[iCount].HowDistracted %></td>
-                    <td style="text-align: center;"><%= fulldata[iCount].HowOftCompare %></td>
-                    <td style="text-align: center;"><%= fulldata[iCount].CompFeelings %></td>
-                    <td style="text-align: center;"><%= fulldata[iCount].OftValidation %></td>
-                    <td style="text-align: center;"><%= fulldata[iCount].OftDepressed %></td>
-                    <td style="text-align: center;"><%= fulldata[iCount].DailyActFluctuate %></td>
-                    <td style="text-align: center;"><%= fulldata[iCount].SleepIssues %></td>
-                    <td style="text-align: center;"><%= fulldata[iCount].DataFrom %></td>
+                    <td style="text-align: center; padding: 10px;"><%= fulldata[iCount].ParticipantID %></td>
+                    <td style="text-align: center; padding: 10px;"><%= fulldata[iCount].Date %></td>
+                    <td style="text-align: center; padding: 10px;"><%= fulldata[iCount].Time %></td>
+                    <td style="text-align: center; padding: 10px;"><%= fulldata[iCount].Age %></td>
+                    <td style="text-align: center; padding: 10px;"><%= fulldata[iCount].Gender %></td>
+                    <td style="text-align: center; padding: 10px;"><%= fulldata[iCount].RelationshipStatus %></td>
+                    <td style="text-align: center; padding: 10px;"><%= fulldata[iCount].OccupationStatus %></td>
+                    <td style="text-align: center; padding: 10px;"><%= fulldata[iCount].Organization %></td>
+                    <td style="text-align: center; padding: 10px;"><%= fulldata[iCount].DoYouUseSocialMedia %></td>
+                    <td style="text-align: center; padding: 10px;"><%= fulldata[iCount].SocialMediaNum %></td>
+                    <td style="text-align: center; padding: 10px;"><%= fulldata[iCount].SMPlatforms %></td>
+                    <td style="text-align: center; padding: 10px;"><%= fulldata[iCount].AvgTime %></td>
+                    <td style="text-align: center; padding: 10px;"><%= fulldata[iCount].ResponseID %></td>
+                    <td style="text-align: center; padding: 10px;"><%= fulldata[iCount].NoSpecPurpose %></td>
+                    <td style="text-align: center; padding: 10px;"><%= fulldata[iCount].HowOftDisctracted %></td>
+                    <td style="text-align: center; padding: 10px;"><%= fulldata[iCount].Restless %></td>
+                    <td style="text-align: center; padding: 10px;"><%= fulldata[iCount].HowDistracted %></td>
+                    <td style="text-align: center; padding: 10px;"><%= fulldata[iCount].HowOftCompare %></td>
+                    <td style="text-align: center; padding: 10px;"><%= fulldata[iCount].CompFeelings %></td>
+                    <td style="text-align: center; padding: 10px;"><%= fulldata[iCount].OftValidation %></td>
+                    <td style="text-align: center; padding: 10px;"><%= fulldata[iCount].OftDepressed %></td>
+                    <td style="text-align: center; padding: 10px;"><%= fulldata[iCount].DailyActFluctuate %></td>
+                    <td style="text-align: center; padding: 10px;"><%= fulldata[iCount].SleepIssues %></td>
+                    <td style="text-align: center; padding: 10px;"><%= fulldata[iCount].DataFrom %></td>
                     <td style="text-align: center;">
-                        <form action="/editUser/<%= fulldata[iCount].ParticipantID %>" method="GET">
+                        <form action="/editUser/<%= fulldata[iCount].ParticipantID %>/<%= fulldata[iCount].SocialMediaNum %>/<%= fulldata[iCount].SMPlatforms %>" method="GET">
                             <button type="submit">Edit User</button>
-                        </form>
+                        </form>   
                     </td>
                     <td style="text-align: center;">
                         <form action="/deleteUser/<%= fulldata[iCount].ParticipantID %>" method="POST">

@@ -107,94 +107,111 @@ app.get('/report', (req, res) => {
     });
 });
 
-app.get("/editUser/:id", (req, res) => {
-    knex.select("Date",
-                "Time",
-                "Age",
-                "Gender",
-                "RelationshipStatus",
-                "OccupationStatus",
-                "Organization",
-                "DoYouUseSocialMedia",
-                "SocialMediaNum",
-                "SMPlatforms",
-                "AvgTime",
-                "ResponseID",
-                "NoSpecPurpose",
-                "HowOftDisctracted",
-                "Restless",
-                "HowDistracted",
-                "BotheredByWorries",
-                "DiffConcentration",
-                "HowOftCompare",
-                "CompFeelings",
-                "OftValidation",
-                "OftDepressed",
-                "DailyActFluctuate",
-                "SleepIssues",
-                "DataFrom").from("provoID").where("participantID", req.params.id).then(fulldata => {
-                    res.render("editUser", {fulldata: fulldata});
-                }).catch( err => {
-                    console.log(err);
-                    res.status(500).json({err});
-                });
+// GET route
+app.get("/editUser/:id/:socialMediaNum/:smPlatform", (req, res) => {
+    const { id, socialMediaNum, smPlatform } = req.params;
+
+    knex
+        .select(
+            "ParticipantID",
+            "Date",
+            "Time",
+            "Age",
+            "Gender",
+            "RelationshipStatus",
+            "OccupationStatus",
+            "Organization",
+            "DoYouUseSocialMedia",
+            "SocialMediaNum",
+            "SMPlatforms",
+            "AvgTime",
+            "ResponseID",
+            "NoSpecPurpose",
+            "HowOftDisctracted",
+            "Restless",
+            "HowDistracted",
+            "BotheredByWorries",
+            "DiffConcentration",
+            "HowOftCompare",
+            "CompFeelings",
+            "OftValidation",
+            "OftDepressed",
+            "DailyActFluctuate",
+            "SleepIssues",
+            "DataFrom"
+        )
+        .from("provoID")
+        .where({
+            "ParticipantID": id,
+            "SocialMediaNum": socialMediaNum,
+            "SMPlatforms": smPlatform
+        })
+        .then((fulldata) => {
+            res.render("editUser", { fulldata: fulldata });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json({ err });
+        });
 });
 
-app.post('/editUser', async (req, res) => {
+
+// POST route
+app.post('/editUser/:id/:socialMediaNum/:smPlatform', async (req, res) => {
+    const { id, socialMediaNum, smPlatform } = req.params;
+    
     // Get the current date and time
     var currentDate = moment().format('MM-DD-YYYY');
     var currentTime = moment().format('HH:mm:ss');
 
-    // Define a mapping between selectedPlatform and SocialMediaNum
-    const platformToNum = {
-        'Facebook': 1,
-        'Twitter': 2,
-        'Instagram': 3,
-        'YouTube': 4,
-        'Discord': 5,
-        'Reddit': 6,
-        'Pinterest': 7,
-        'TikTok': 8,
-        // Add more platforms as needed
+    // Assuming SMPlatforms is not an array from the request body
+    const platformsData = {
+        "ParticipantID": id,
+        "Date": currentDate,
+        "Time": currentTime,
+        "Age": req.body.Age,
+        "Gender": req.body.Gender,
+        "RelationshipStatus": req.body.RelationshipStatus,
+        "OccupationStatus": req.body.OccupationStatus,
+        "Organization": req.body.Organization,
+        "DoYouUseSocialMedia": req.body.DoYouUseSocialMedia,
+        "SMPlatforms": smPlatform, // Assuming this field doesn't change in the update
+        "SocialMediaNum": socialMediaNum, // Assuming this field doesn't change in the update
+        "AvgTime": req.body.AvgTime,
+        "ResponseID": req.body.ResponseID,
+        "NoSpecPurpose": req.body.NoSpecPurpose,
+        "HowOftDisctracted": req.body.HowOftDisctracted,
+        "Restless": req.body.Restless,
+        "HowDistracted": req.body.HowDistracted,
+        "BotheredByWorries": req.body.BotheredByWorries,
+        "DiffConcentration": req.body.DiffConcentration,
+        "HowOftCompare": req.body.HowOftCompare,
+        "CompFeelings": req.body.CompFeelings,
+        "OftValidation": req.body.OftValidation,
+        "OftDepressed": req.body.OftDepressed,
+        "DailyActFluctuate": req.body.DailyActFluctuate,
+        "SleepIssues": req.body.SleepIssues,
+        "DataFrom": 'Provo'
     };
 
-    // Assuming SMPlatforms is an array from the request body
-    console.log(req.body.SMPlatforms);
-    for (const selectedPlatform of req.body.SMPlatforms) {
-        // Get the corresponding SocialMediaNum based on the selected platform
-        const socialMediaNum = platformToNum[selectedPlatform];
+    try {
+        // Perform the update
+        await knex("provoID")
+            .where({
+                "ParticipantID": id,
+                "SocialMediaNum": socialMediaNum,
+                "SMPlatforms": smPlatform
+            })
+            .update(platformsData);
 
-        // Insert data into the database using knex for each selected social media platform
-        await knex('provoID').insert({
-            Date: currentDate,
-            Time: currentTime,
-            Age: req.body.Age,
-            Gender: req.body.Gender,
-            RelationshipStatus: req.body.RelationshipStatus,
-            OccupationStatus: req.body.OccupationStatus,
-            Organization: req.body.Organization,
-            DoYouUseSocialMedia: req.body.DoYouUseSocialMedia,
-            SMPlatforms: selectedPlatform, // Inserting one platform at a time
-            SocialMediaNum: socialMediaNum, // Use the mapped SocialMediaNum
-            AvgTime: req.body.AvgTime,
-            NoSpecPurpose: req.body.NoSpecPurpose,
-            HowOftDisctracted: req.body.HowOftDisctracted,
-            Restless: req.body.Restless,
-            HowDistracted: req.body.HowDistracted,
-            BotheredByWorries: req.body.BotheredByWorries,
-            DiffConcentration: req.body.DiffConcentration,
-            HowOftCompare: req.body.HowOftCompare,
-            CompFeelings: req.body.CompFeelings,
-            OftValidation: req.body.OftValidation,
-            OftDepressed: req.body.OftDepressed,
-            DailyActFluctuate: req.body.DailyActFluctuate,
-            SleepIssues: req.body.SleepIssues,
-            DataFrom: 'Provo'
-        });
+        // Redirect after the transaction is successful
+        res.redirect('/report');
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
     }
-
-    res.redirect('/report');
 });
+
 
 app.post("/deleteUser/:id", (req, res) => {
     knex("provoID").where("ParticipantID", req.params.id).del().then(provoID => {
