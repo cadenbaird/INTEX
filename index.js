@@ -95,8 +95,8 @@ app.get('/loginpage', (req, res) => {
 app.post('/loginpage', async (req, res) => {
     var user = await knex('userstorage')
         .where({
-          Username: req.body.username,
-          Password: req.body.password,
+          Username: req.body.floatingInput,
+          Password: req.body.floatingPassword,
         })
         .first();
   
