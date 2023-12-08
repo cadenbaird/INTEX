@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.2",
+    "certbot": "^5.0.3",
     "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
@@ -19,6 +20,7 @@
     "knex": "^3.1.0",
     "moment": "^2.29.4",
     "mysql": "^2.18.1",
+    "node": "^21.2.0",
     "pg": "^8.11.3",
     "pg-promise": "^11.5.4"
   }
