@@ -12,10 +12,31 @@ Dropdown list to filter to a specific person -->
 </head>
 <body>
     <label><b>Admin Control Panel:</b></label>
-    <br>
+    <br><br><br>
     <td style="text-align: center;">
         <form>
             <a class="btn btn-primary" href="/createaccount">Create Account</a></div>
+        </form>
+    </td>
+    <br><br>
+    <td style="text-align: center;">
+        <form>
+            <label for="participantIdRange"><b>Sort by ParticipantID Range:</b></label>
+            <select id="participantIdRange" name="participantIdRange" onchange="this.form.submit()">
+            <option value="all">All Participants</option>
+            <option value="1-50">1-50</option>
+            <option value="51-100">51-100</option>
+            <option value="101-150">101-150</option>
+            <option value="151-200">151-200</option>
+            <option value="201-250">201-250</option>
+            <option value="251-300">251-300</option>
+            <option value="301-350">301-350</option>
+            <option value="351-400">351-400</option>
+            <option value="401-450">401-450</option>
+            <option value="451-500">451-500</option>
+            <option value="501-550">501-550</option>
+            <option value="551-600">551-600</option>
+            </select>
         </form>
     </td>
     <br><br> 
