@@ -162,7 +162,7 @@ app.post('/editUser/:id/:socialMediaNum/:smPlatform', async (req, res) => {
     const { id, socialMediaNum, smPlatform } = req.params;
     
     // Get the current date and time
-    var currentDate = moment().format('MM-DD-YYYY');
+    var currentDate = moment().format('YYYY-MM-DD');
     var currentTime = moment().format('HH:mm:ss');
 
     // Assuming SMPlatforms is not an array from the request body
