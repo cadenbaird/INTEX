@@ -226,7 +226,7 @@ app.post("/deleteUser/:id", (req, res) => {
 // Submitting the survey
 app.post('/submitSurvey', async (req, res) => {
     // Get the current date and time
-    var currentDate = moment().format('MM-DD-YYYY');
+    var currentDate = moment().format('YYYY-MM-DD');
     var currentTime = moment().format('HH:mm:ss');
 
     // Define a mapping between selectedPlatform and SocialMediaNum
