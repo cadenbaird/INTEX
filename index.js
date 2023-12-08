@@ -8,6 +8,7 @@ const moment = require('moment');
 // Configure environment variables
 dotenv.config();
 
+//test
 // Extract environment variables
 const ENV_VARIABLES = {
     dbHost: process.env.DATABASE_HOST || 'awseb-e-4jsq3qcmyq-stack-awsebrdsdatabase-ppisswm3di3v.cgrlbkhl90jg.us-east-1.rds.amazonaws.com',
