@@ -102,11 +102,48 @@ app.post('/loginpage', async (req, res) => {
 //here is a random note to test
 //Hi!
 // Report Page
+// app.get('/report', (req, res) => {
+//     knex.select().from("provoID").then(provoID => {
+//         res.render('report', {fulldata: provoID});
+//     });
+// });
+
+// Modify the app.get('/report') route to handle the selected range
+
+// Report Page with ParticipantID Range Handling
+// Modify the app.get('/report') route to handle the selected range
+
+// Modify the app.get('/report') route to handle the selected range
+
+// Modify the app.get('/report') route to handle the selected range
+
+// Modify the app.get('/report') route to handle the selected range
+
 app.get('/report', (req, res) => {
-    knex.select().from("provoID").then(provoID => {
-        res.render('report', {fulldata: provoID});
+    let participantIdRange = req.query.participantIdRange; // Get selected range from query parameter
+
+    // Define the range conditions based on the selected option
+    let rangeConditions = {};
+
+    if (participantIdRange && participantIdRange !== 'all') {
+        const [start, end] = participantIdRange.split('-');
+
+        // Convert start and end to numbers
+        const startNumber = parseInt(start, 10);
+        const endNumber = parseInt(end, 10);
+
+        rangeConditions = (builder) => {
+            builder.whereBetween("ParticipantID", [startNumber, endNumber]);
+        };
+    }
+
+    // Use knex to select data based on the range conditions
+    knex.select().from("provoID").where(rangeConditions).then(provoID => {
+        res.render('report', { fulldata: provoID, selectedRange: participantIdRange });
     });
 });
+
+
 
 // GET route
 app.get("/editUser/:id/:socialMediaNum/:smPlatform", (req, res) => {
@@ -292,5 +329,5 @@ app.post('/submitSurvey', async (req, res) => {
 const port = ENV_VARIABLES.appPort;
 
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+    console.log(`Server is running on port ${port}`);
 });
