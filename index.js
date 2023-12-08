@@ -10,10 +10,10 @@ dotenv.config();
 
 // Extract environment variables
 const ENV_VARIABLES = {
-    dbHost: process.env.DATABASE_HOST || 'provomentalhealth.cgrlbkhl90jg.us-east-1.rds.amazonaws.com',
+    dbHost: process.env.DATABASE_HOST || 'awseb-e-4jsq3qcmyq-stack-awsebrdsdatabase-ppisswm3di3v.cgrlbkhl90jg.us-east-1.rds.amazonaws.com',
     dbUser: process.env.DATABASE_USER || 'postgres',
     dbPassword: process.env.DATABASE_PASSWORD || 'intexadmin',
-    dbName: process.env.DATABASE_NAME || 'intexdb',
+    dbName: process.env.DATABASE_NAME || 'ebdb',
     appPort: process.env.PORT || 443 || 80 || 5432 || 8080 || 8081,
 };
 
@@ -24,10 +24,10 @@ const app = express();
 const knex = require('knex')({
     client: 'pg',
     connection: {
-        host: process.env.RDS_HOSTNAME || 'provomentalhealth.cgrlbkhl90jg.us-east-1.rds.amazonaws.com',
+        host: process.env.RDS_HOSTNAME || 'awseb-e-4jsq3qcmyq-stack-awsebrdsdatabase-ppisswm3di3v.cgrlbkhl90jg.us-east-1.rds.amazonaws.com',
         user: process.env.RDS_USERNAME || 'postgres',
         password: process.env.RDS_PASSWORD || 'intexadmin',
-        database: process.env.RDS_DB_NAME || 'intexdb',
+        database: process.env.RDS_DB_NAME || 'ebdb',
         port: process.env.RDS_PORT || 5432,
         ssl: process.env.DB_SSL ? {rejectedUnauthorized: false} : false
     }
