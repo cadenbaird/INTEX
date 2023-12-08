@@ -1,3 +1,2 @@
-#!/usr/bin/env bash
-# Place in .platform/hooks/postdeploy directory
-sudo certbot -n -d provomentalsocial.is404.net --nginx --agree-tos --email hoopesew@gmail.com
+# Use Certbot to obtain/renew the certificate
+sudo certbot -n --nginx --agree-tos --email hoopesew@gmail.com
