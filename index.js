@@ -10,13 +10,13 @@ dotenv.config();
 
 //test
 // Extract environment variables
-const ENV_VARIABLES = {
-    dbHost: process.env.DATABASE_HOST || 'awseb-e-4jsq3qcmyq-stack-awsebrdsdatabase-ppisswm3di3v.cgrlbkhl90jg.us-east-1.rds.amazonaws.com',
-    dbUser: process.env.DATABASE_USER || 'postgres',
-    dbPassword: process.env.DATABASE_PASSWORD || 'intexadmin',
-    dbName: process.env.DATABASE_NAME || 'ebdb',
-    appPort: process.env.PORT || 443 || 80 || 5432 || 8080 || 8081,
-};
+// const ENV_VARIABLES = {
+//     dbHost: process.env.DATABASE_HOST || 'awseb-e-4jsq3qcmyq-stack-awsebrdsdatabase-ppisswm3di3v.cgrlbkhl90jg.us-east-1.rds.amazonaws.com',
+//     dbUser: process.env.DATABASE_USER || 'postgres',
+//     dbPassword: process.env.DATABASE_PASSWORD || 'intexadmin',
+//     dbName: process.env.DATABASE_NAME || 'ebdb',
+//     appPort: process.env.PORT || 3000,
+// };
 
 // Create an instance of Express
 const app = express();
