@@ -15,7 +15,7 @@ const ENV_VARIABLES = {
     dbUser: process.env.DATABASE_USER || 'postgres',
     dbPassword: process.env.DATABASE_PASSWORD || 'intexadmin',
     dbName: process.env.DATABASE_NAME || 'ebdb',
-    appPort: process.env.PORT || 3000,
+    appPort: process.env.PORT || 8080,
 };
 
 // Create an instance of Express
